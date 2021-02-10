@@ -1,18 +1,18 @@
-from tkinter import *
-import tkinter as tk
+from tkinter import Button, Entry, Frame, Scale, Tk, mainloop
 import pandas as pd
 import numpy as np
 import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from matplotlib.figure import Figure
 import matplotlib.ticker as plticker
+import os
 
 matplotlib.use("TkAgg")
 
-arquivo = pd.read_excel(r"C:\Users\nicoe\PycharmProjects\CodigoSimulacao\dados.xlsx")
+arquivo = pd.read_excel((str(os.getcwd())) + "\dados.xlsx")
 
 
-def Refetividade(t):
+def refletividade(t):
     er = []
     ur = []
     c = 299792458
@@ -41,47 +41,47 @@ def Refetividade(t):
 janela = Tk()
 janela.state("zoomed")
 janela.title("Simulação")
-janela.minsize(500,500)
+janela.minsize(500, 500)
 
-frame_grafico = Frame(janela,bd=5,bg='black',relief='ridge')
-frame_grafico.pack(expand=True,fill='both')
+frame_grafico = Frame(janela, bd=5, bg='black', relief='ridge')
+frame_grafico.pack(expand=True, fill='both')
 
 fi = Figure(figsize=(5, 4), dpi=100)
 
 canvas = FigureCanvasTkAgg(fi, master=frame_grafico)
 canvas.draw()
-canvas.get_tk_widget().pack(side=tk.TOP, fill='both', expand=1)
-canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
+canvas._tkcanvas.pack(side='top', fill='both', expand=1)
 
-
-frame_esquerda=Frame(janela)
-frame_esquerda.pack(side=LEFT, fill='both', expand=True)
-frame_direita=(Frame(janela))
-frame_direita.pack(side=RIGHT, fill='both', expand=True)
+frame_esquerda = Frame(janela)
+frame_esquerda.pack(side='left', fill='both', expand=True)
+frame_direita = (Frame(janela))
+frame_direita.pack(side='right', fill='both', expand=True)
 
 
 def update(var):
+    global dadosxy
     pos = slider.get()
     entryEsp.delete(0, 'end')
     entryEsp.insert(0, ("%.3f" % pos))
-    dadosxy = Refetividade(pos/1000)
+    dadosxy = refletividade(pos / 1000)
     line.set_data(dadosxy[0], dadosxy[1])
     fi.canvas.draw_idle()
 
 
-frame_slider = Frame(frame_direita,bg='black', bd=5, relief='ridge')
+frame_slider = Frame(frame_direita, bg='black', bd=5, relief='ridge')
 frame_slider.pack(expand=1)
 
-slider = Scale(frame_slider, from_=2, to=8, length=270, orient=HORIZONTAL, tickinterval=1,
-               resolution = .1, command=update)
+slider = Scale(frame_slider, from_=2, to=8, length=270, orient='horizontal', tickinterval=1,
+               resolution=.1, command=update)
 slider.set(5)
 slider.pack()
 
-frame_esp = Frame(frame_esquerda,bd=5,bg='black',relief='ridge')
+frame_esp = Frame(frame_esquerda, bd=5, bg='black', relief='ridge')
 frame_esp.pack()
 
-entryEsp = Entry(frame_esp,width=10)
-entryEsp.pack(side="left",  fill='both')
+entryEsp = Entry(frame_esp, width=10)
+entryEsp.pack(side="left", fill='both')
 entryEsp.insert(0, '0.004')
 
 
@@ -91,18 +91,18 @@ def atualiza_plot():
     update(slider.get())
 
 
-btn = Button(frame_esp, text="Espessura",width=20, command=atualiza_plot)
+btn = Button(frame_esp, text="Espessura", width=20, command=atualiza_plot)
 btn.pack(side="right", fill='x')
 
-frame_lim_superior = Frame(frame_esquerda,bd=5,bg='black',relief='ridge')
+frame_lim_superior = Frame(frame_esquerda, bd=5, bg='black', relief='ridge')
 frame_lim_superior.pack()
 
-frame_lim_inferior = Frame(frame_esquerda,bd=5,bg='black',relief='ridge')
+frame_lim_inferior = Frame(frame_esquerda, bd=5, bg='black', relief='ridge')
 frame_lim_inferior.pack()
 
 NavigationToolbar2Tk(canvas, frame_slider)
 
-ymin = Entry(frame_lim_inferior,width=10)
+ymin = Entry(frame_lim_inferior, width=10)
 ymin.pack(side='left', fill='both')
 
 frame_nome = Frame(frame_esquerda, bd=6, bg='black', relief='ridge')
@@ -112,10 +112,9 @@ nome = Entry(frame_nome, width=40)
 nome.pack()
 
 
-
 def atualiza_axis():
-     a.set_ylim(ymin=-np.absolute(float(ymin.get())))
-     fi.canvas.draw_idle()
+    a.set_ylim(ymin=-np.absolute(float(ymin.get())))
+    fi.canvas.draw_idle()
 
 
 def atualiza_axiss():
@@ -125,17 +124,16 @@ def atualiza_axiss():
 
 btn_lim_inferior = Button(frame_lim_inferior,
                           text="Limite inferior", width=20, command=atualiza_axis)
-btn_lim_inferior.pack(side="right",  fill='x')
+btn_lim_inferior.pack(side="right", fill='x')
 
-ymax = Entry(frame_lim_superior, width = 10)
-ymax.pack(side='left',fill='both')
+ymax = Entry(frame_lim_superior, width=10)
+ymax.pack(side='left', fill='both')
 
-
-btn_lim_superior = Button(frame_lim_superior, text='Limite Superior', width=20, command = atualiza_axiss)
-btn_lim_superior.pack(side='left',fill='both')
+btn_lim_superior = Button(frame_lim_superior, text='Limite Superior', width=20, command=atualiza_axiss)
+btn_lim_superior.pack(side='left', fill='both')
 
 a = fi.add_subplot(111)
-dadosxy = Refetividade(.004)
+dadosxy = refletividade(.004)
 line, = a.plot(dadosxy[0], dadosxy[1])
 a.set_ylim(-30, 0)
 a.grid()
@@ -154,4 +152,4 @@ a.xaxis.set_major_locator(tick)
 a.set_ylabel('Refletividade (dB)', fontsize=15)
 a.set_xlabel('Frequência (GHz)', fontsize=15)
 
-tk.mainloop()
+mainloop()
