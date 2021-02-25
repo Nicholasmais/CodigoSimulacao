@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="078827ab-39bf-4fe4-bdba-9a0121603327" name="Default Changelist" comment="" />
+    <list default="true" id="078827ab-39bf-4fe4-bdba-9a0121603327" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simulador.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,9 +30,36 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nicoe\PycharmProjects\CodigoSimulacao" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.Simulador">
+    <configuration name="Plummer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Código Simulação" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Plummer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Simulador" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Código Simulação" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -51,7 +81,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="te" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Testefileex" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Código Simulação" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -63,7 +93,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/te.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Testefileex.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -72,7 +102,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="teste" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="esfera" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Código Simulação" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,7 +114,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/teste.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/esfera.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Código Simulação" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -96,8 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Simulador" />
-        <item itemvalue="Python.teste" />
-        <item itemvalue="Python.te" />
+        <item itemvalue="Python.Testefileex" />
+        <item itemvalue="Python.esfera" />
+        <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.Plummer" />
       </list>
     </recent_temporary>
   </component>
@@ -115,38 +168,38 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1345" height="140" key="GridCell.Tab.0.bottom" timestamp="1612966317042">
+    <state width="1345" height="210" key="GridCell.Tab.0.bottom" timestamp="1614279688654">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1612966317042" />
-    <state width="1345" height="140" key="GridCell.Tab.0.center" timestamp="1612966317042">
+    <state width="1345" height="210" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614279688654" />
+    <state width="1345" height="210" key="GridCell.Tab.0.center" timestamp="1614279688654">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1612966317042" />
-    <state width="1345" height="140" key="GridCell.Tab.0.left" timestamp="1612966317042">
+    <state width="1345" height="210" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614279688654" />
+    <state width="1345" height="210" key="GridCell.Tab.0.left" timestamp="1614279688654">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1612966317042" />
-    <state width="1345" height="140" key="GridCell.Tab.0.right" timestamp="1612966317042">
+    <state width="1345" height="210" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614279688654" />
+    <state width="1345" height="210" key="GridCell.Tab.0.right" timestamp="1614279688654">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1612966317042" />
-    <state width="1345" height="214" key="GridCell.Tab.1.bottom" timestamp="1612962504790">
+    <state width="1345" height="210" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614279688654" />
+    <state width="1345" height="214" key="GridCell.Tab.1.bottom" timestamp="1613182593512">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="214" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1612962504790" />
-    <state width="1345" height="214" key="GridCell.Tab.1.center" timestamp="1612962504789">
+    <state width="1345" height="214" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1613182593512" />
+    <state width="1345" height="214" key="GridCell.Tab.1.center" timestamp="1613182593512">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="214" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1612962504789" />
-    <state width="1345" height="214" key="GridCell.Tab.1.left" timestamp="1612962504789">
+    <state width="1345" height="214" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1613182593512" />
+    <state width="1345" height="214" key="GridCell.Tab.1.left" timestamp="1613182593512">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="214" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1612962504789" />
-    <state width="1345" height="214" key="GridCell.Tab.1.right" timestamp="1612962504789">
+    <state width="1345" height="214" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1613182593512" />
+    <state width="1345" height="214" key="GridCell.Tab.1.right" timestamp="1613182593512">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="214" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1612962504789" />
+    <state width="1345" height="214" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1613182593512" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1612966656962">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

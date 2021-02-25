@@ -1,4 +1,5 @@
 from tkinter import Button, Entry, Frame, Scale, Tk, mainloop
+import tkinter.filedialog as tkf
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -8,9 +9,13 @@ import matplotlib.ticker as plticker
 import os
 
 matplotlib.use("TkAgg")
+#("CSV Files","*.csv")
+#arquivo = pd.read_excel((str(os.getcwd())) + "\dados.xlsx")
+filename = tkf.askopenfilename(initialdir="/",
+                                          title="Select A File",
+                                          filetype=(("xlsx files", "*.xlsx")))
 
-arquivo = pd.read_excel((str(os.getcwd())) + "\dados.xlsx")
-
+arquivo = pd.read_excel(f"{filename}")
 
 def refletividade(t):
     er = []
@@ -55,7 +60,7 @@ canvas._tkcanvas.pack(side='top', fill='both', expand=1)
 
 frame_esquerda = Frame(janela)
 frame_esquerda.pack(side='left', fill='both', expand=True)
-frame_direita = (Frame(janela))
+frame_direita = Frame(janela)
 frame_direita.pack(side='right', fill='both', expand=True)
 
 
@@ -68,9 +73,29 @@ def update(var):
     line.set_data(dadosxy[0], dadosxy[1])
     fi.canvas.draw_idle()
 
+def abre():
+    filename = tkf.askopenfilename(initialdir="/",
+                                          title="Select A File",
+                                          filetype=(("xlsx files", "*.xlsx"), ("all files", "*.*")))
+    file = pd.read_excel(f"{filename}")
 
-frame_slider = Frame(frame_direita, bg='black', bd=5, relief='ridge')
-frame_slider.pack(expand=1)
+    try:
+        print(file)
+
+    except AssertionError:
+        from sys import exit
+        exit()
+        janela.mainloop()
+
+
+
+
+botao = Button(frame_direita, text='Abrir arquivo', bd=5, relief='ridge' ,command = abre)
+botao.config(highlightbackground='black', highlightcolor = 'black')
+botao.pack()
+
+frame_slider = Frame(frame_direita, bg='black', bd=5, relief='ridge', width = 300, height = 400)
+frame_slider.pack(expand=True)
 
 slider = Scale(frame_slider, from_=2, to=8, length=270, orient='horizontal', tickinterval=1,
                resolution=.1, command=update)
@@ -100,12 +125,14 @@ frame_lim_superior.pack()
 frame_lim_inferior = Frame(frame_esquerda, bd=5, bg='black', relief='ridge')
 frame_lim_inferior.pack()
 
-NavigationToolbar2Tk(canvas, frame_slider)
+asd = NavigationToolbar2Tk(canvas, frame_slider)
+asd.config(width=270)
+asd.pack()
 
 ymin = Entry(frame_lim_inferior, width=10)
 ymin.pack(side='left', fill='both')
 
-frame_nome = Frame(frame_esquerda, bd=6, bg='black', relief='ridge')
+frame_nome = Frame(frame_esquerda, bd=6, bg='black', relief='ridge', width = 270)
 frame_nome.pack()
 
 nome = Entry(frame_nome, width=40)
