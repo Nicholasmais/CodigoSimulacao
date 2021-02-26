@@ -6,16 +6,46 @@ import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from matplotlib.figure import Figure
 import matplotlib.ticker as plticker
-import os
+
+# import ctypes
+# import os
+
+# ctypes.windll.shcore.SetProcessDpiAwareness(True)
 
 matplotlib.use("TkAgg")
-#("CSV Files","*.csv")
-#arquivo = pd.read_excel((str(os.getcwd())) + "\dados.xlsx")
-filename = tkf.askopenfilename(initialdir="/",
-                                          title="Select A File",
-                                          filetype=(("xlsx files", "*.xlsx")))
 
-arquivo = pd.read_excel(f"{filename}")
+# ("CSV Files","*.csv")
+# arquivo = pd.read_excel((str(os.getcwd())) + "\dados.xlsx")
+# filename = tkf.askopenfilename(initialdir="/",
+#                                         filetype=(("xlsx files", "*.xlsx"),))
+# arquivo = pd.read_excel(f"{filename}")
+
+def abre():
+    global arquivo, line, a, dadosxy
+    filename = tkf.askopenfilename(initialdir="/",
+                                   title="Select A File",
+                                   filetype=(("xlsx files", "*.xlsx"), ("all files", "*.*")))
+    arquivo = pd.read_excel(f"{filename}")
+
+    btn2.config(state='active')
+    btn.config(state='active')
+    btn_lim_superior.config(state='active')
+    btn_lim_inferior.config(state='active')
+    slider.config(state='active')
+
+    dadosxy = refletividade(.004)
+
+    a = fi.add_subplot(111)
+    line, = a.plot(dadosxy[0], dadosxy[1])
+    a.set_ylim(-30, 0)
+    a.grid()
+    a.axes.format_coord = lambda x, y: ""
+    tick = plticker.MultipleLocator(base=0.5)
+    a.xaxis.set_major_locator(tick)
+    a.set_ylabel('Refletividade (dB)', fontsize=15)
+    a.set_xlabel('Frequência (GHz)', fontsize=15)
+    fi.canvas.draw_idle()
+
 
 def refletividade(t):
     er = []
@@ -46,7 +76,8 @@ def refletividade(t):
 janela = Tk()
 janela.state("zoomed")
 janela.title("Simulação")
-janela.minsize(500, 500)
+janela.iconbitmap("favicon.ico")
+janela.minsize(500, 575)
 
 frame_grafico = Frame(janela, bd=5, bg='black', relief='ridge')
 frame_grafico.pack(expand=True, fill='both')
@@ -65,7 +96,6 @@ frame_direita.pack(side='right', fill='both', expand=True)
 
 
 def update(var):
-    global dadosxy
     pos = slider.get()
     entryEsp.delete(0, 'end')
     entryEsp.insert(0, ("%.3f" % pos))
@@ -73,41 +103,25 @@ def update(var):
     line.set_data(dadosxy[0], dadosxy[1])
     fi.canvas.draw_idle()
 
-def abre():
-    filename = tkf.askopenfilename(initialdir="/",
-                                          title="Select A File",
-                                          filetype=(("xlsx files", "*.xlsx"), ("all files", "*.*")))
-    file = pd.read_excel(f"{filename}")
 
-    try:
-        print(file)
-
-    except AssertionError:
-        from sys import exit
-        exit()
-        janela.mainloop()
-
-
-
-
-botao = Button(frame_direita, text='Abrir arquivo', bd=5, relief='ridge' ,command = abre)
-botao.config(highlightbackground='black', highlightcolor = 'black')
+botao = Button(frame_direita, text='Abrir arquivo', bd=5, relief='ridge', command=abre)
+botao.config(highlightbackground='black', highlightcolor='black')
 botao.pack()
 
-frame_slider = Frame(frame_direita, bg='black', bd=5, relief='ridge', width = 300, height = 400)
+frame_slider = Frame(frame_direita, bg='black', bd=5, relief='ridge', width=300, height=400)
 frame_slider.pack(expand=True)
 
 slider = Scale(frame_slider, from_=2, to=8, length=270, orient='horizontal', tickinterval=1,
                resolution=.1, command=update)
 slider.set(5)
 slider.pack()
+slider.config(state='disabled')
 
 frame_esp = Frame(frame_esquerda, bd=5, bg='black', relief='ridge')
 frame_esp.pack()
 
 entryEsp = Entry(frame_esp, width=10)
 entryEsp.pack(side="left", fill='both')
-entryEsp.insert(0, '0.004')
 
 
 def atualiza_plot():
@@ -118,6 +132,7 @@ def atualiza_plot():
 
 btn = Button(frame_esp, text="Espessura", width=20, command=atualiza_plot)
 btn.pack(side="right", fill='x')
+btn.config(state='disabled')
 
 frame_lim_superior = Frame(frame_esquerda, bd=5, bg='black', relief='ridge')
 frame_lim_superior.pack()
@@ -131,12 +146,14 @@ asd.pack()
 
 ymin = Entry(frame_lim_inferior, width=10)
 ymin.pack(side='left', fill='both')
+ymin.insert(0, '-30')
 
-frame_nome = Frame(frame_esquerda, bd=6, bg='black', relief='ridge', width = 270)
+frame_nome = Frame(frame_esquerda, bd=6, bg='black', relief='ridge', width=270)
 frame_nome.pack()
 
 nome = Entry(frame_nome, width=40)
 nome.pack()
+nome.insert(0, "Exemplo")
 
 
 def atualiza_axis():
@@ -152,19 +169,15 @@ def atualiza_axiss():
 btn_lim_inferior = Button(frame_lim_inferior,
                           text="Limite inferior", width=20, command=atualiza_axis)
 btn_lim_inferior.pack(side="right", fill='x')
+btn_lim_inferior.config(state='disabled')
 
 ymax = Entry(frame_lim_superior, width=10)
 ymax.pack(side='left', fill='both')
+ymax.insert(0, '0')
 
 btn_lim_superior = Button(frame_lim_superior, text='Limite Superior', width=20, command=atualiza_axiss)
 btn_lim_superior.pack(side='left', fill='both')
-
-a = fi.add_subplot(111)
-dadosxy = refletividade(.004)
-line, = a.plot(dadosxy[0], dadosxy[1])
-a.set_ylim(-30, 0)
-a.grid()
-a.axes.format_coord = lambda x, y: ""
+btn_lim_superior.config(state='disabled')
 
 
 def nomeup():
@@ -174,9 +187,6 @@ def nomeup():
 
 btn2 = Button(frame_nome, text='Alterar título', command=nomeup)
 btn2.pack(fill='x')
-tick = plticker.MultipleLocator(base=0.5)
-a.xaxis.set_major_locator(tick)
-a.set_ylabel('Refletividade (dB)', fontsize=15)
-a.set_xlabel('Frequência (GHz)', fontsize=15)
+btn2.config(state='disabled')
 
 mainloop()
