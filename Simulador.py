@@ -1,4 +1,4 @@
-from tkinter import Button, Entry, Frame, Scale, Tk, mainloop
+from tkinter import Button, Entry, Frame, Scale, Tk, mainloop, DoubleVar
 import tkinter.filedialog as tkf
 import pandas as pd
 import numpy as np
@@ -111,9 +111,10 @@ botao.pack()
 frame_slider = Frame(frame_direita, bg='black', bd=5, relief='ridge', width=300, height=400)
 frame_slider.pack(expand=True)
 
+slider_var = DoubleVar()
+slider_var.set(5)
 slider = Scale(frame_slider, from_=2, to=8, length=270, orient='horizontal', tickinterval=1,
-               resolution=.1, command=update)
-slider.set(5)
+               resolution=.1, command=update, variable = slider_var)
 slider.pack()
 slider.config(state='disabled')
 
