@@ -7,26 +7,16 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 from matplotlib.figure import Figure
 import matplotlib.ticker as plticker
 
-# import ctypes
-# import os
-
-# ctypes.windll.shcore.SetProcessDpiAwareness(True)
 
 matplotlib.use("TkAgg")
 
-# ("CSV Files","*.csv")
-# arquivo = pd.read_excel((str(os.getcwd())) + "\dados.xlsx")
-# filename = tkf.askopenfilename(initialdir="/",
-#                                         filetype=(("xlsx files", "*.xlsx"),))
-# arquivo = pd.read_excel(f"{filename}")
 
 def abre():
     global arquivo, line, a, dadosxy
     filename = tkf.askopenfilename(initialdir="/",
                                    title="Select A File",
-                                   filetype=(("xlsx files", "*.xlsx"), ("all files", "*.*")))
-    arquivo = pd.read_excel(f"{filename}")
-
+                                   filetype=(("csv files", "*.csv",".txt"), ("all files", "*.*")))
+    arquivo = pd.read_csv(f"{filename}")
     btn2.config(state='active')
     btn.config(state='active')
     btn_lim_superior.config(state='active')
@@ -34,8 +24,9 @@ def abre():
     slider.config(state='active')
 
     dadosxy = refletividade(.004)
-
+    fi.clf()
     a = fi.add_subplot(111)
+
     line, = a.plot(dadosxy[0], dadosxy[1])
     a.set_ylim(-30, 0)
     a.grid()
@@ -60,10 +51,10 @@ def refletividade(t):
         data.append(arquivo[colunas].tolist())
 
     for j in range(0, len(data[0])):
-        er.append(np.complex(data[1][j], data[2][j]))
-        ur.append(np.complex(data[3][j], data[4][j]))
+        er.append(complex(data[1][j], data[2][j]))
+        ur.append(complex(data[3][j], data[4][j]))
         k.append(2 * np.pi * data[0][j] / c)
-        n.append(((ur[j] / er[j]) ** (1 / 2)) * np.tanh(np.complex(0, -1 * k[j] * t * ((ur[j] * er[j]) ** (1 / 2)))))
+        n.append(((ur[j] / er[j]) ** (1 / 2)) * np.tanh(complex(0, -1 * k[j] * t * ((ur[j] * er[j]) ** (1 / 2)))))
         R.append((n[j] - 1) / (n[j] + 1))
         rl.append(20 * np.log(np.absolute(R[j])))
 

@@ -1,0 +1,12 @@
+{
+  "base_url": "/",
+  "hostname": "localhost",
+  "password": false,
+  "pid": 14212,
+  "port": 8888,
+  "root_dir": "C:\\Users\\nicoe",
+  "secure": false,
+  "token": "a928cd57466b0464252c62bb5f7e75ed000820075d3024db",
+  "url": "http://localhost:8888/",
+  "version": "1.6.4"
+}
